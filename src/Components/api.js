@@ -1,12 +1,14 @@
 import axios from "axios";
 
-function getItems(searchParams) {
-  const categoryQuery = searchParams.get("category_name");
-  if (categoryQuery) {
+function getArticles(searchParams) {
+  const topicQuery = searchParams.get("topic");
+  if (topicQuery) {
     return axios.get(
-      `https://be-project-news.onrender.com/api/items?category_name=${categoryQuery}`
+      `https://be-project-news.onrender.com/api/articles?topic=${topicQuery}`
     );
   } else {
     return axios.get("https://be-project-news.onrender.com/api/articles");
   }
 }
+
+export default getArticles;

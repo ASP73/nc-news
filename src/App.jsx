@@ -6,14 +6,14 @@ import ArticleList from './Components/ArticleList';
 import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Welcome />} />
-				{/* <Route path="/articles" element={<ArticleList />} />   */}
+				<Route path="/articles" element={<ArticleList />} />  
       </Routes>
 
       {/* <div className="card">
@@ -25,4 +25,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
