@@ -11,4 +11,10 @@ function getArticles(searchParams) {
   }
 }
 
+export function getArticleById(article_id) {
+  return axios.get(
+    `https://be-project-news.onrender.com/api/articles/${article_id}`
+  );
+}
+
 export default getArticles;

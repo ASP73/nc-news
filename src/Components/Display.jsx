@@ -9,7 +9,6 @@ const Display = ({ searchParams }) => {
 		setIsError(false);
 		getArticles(searchParams)
 			.then(({ data }) => {
-                console.log(data)
 				let articlesDisplayed = data.articles;
 				setAllArticles(articlesDisplayed);
 			})
