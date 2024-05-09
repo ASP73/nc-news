@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
-import { getArticleById, getCommentsByArticleId } from "./api";
+import { getArticleById } from "./api";
 import { useState, useEffect } from "react";
+import CommentList from "./CommentsList";
+
 export default function SingleArticle() {
 	const { article_id } = useParams();
 	const [singleArticle, setSingleArticle] = useState({});
+    const [showComments, setShowComments] = useState(false);
 	useEffect(() => {
 		getArticleById(article_id).then(({ data }) => {
             console.log(data);
@@ -18,6 +21,10 @@ export default function SingleArticle() {
         const date = new Date(datestr);
         return date.toLocaleDateString();
     }
+
+    const clickShowComments = () => {
+        setShowComments(true);
+    }
 	return (
 		<div className="body-container">
 			<img className="article-img" src={article_img_url} alt={`image relating to ${title}`} />
@@ -29,7 +36,8 @@ export default function SingleArticle() {
                 <p>Date created: {formatDate(created_at)}</p>
                 <p>Votes: {votes}</p>
 
-				<button className="comments-btn">Show Comments</button>
+				<button className="comments-btn" onClick={clickShowComments}>Show Comments</button>
+                {showComments && <CommentList article_id={article_id} />}
                 <button className="comments-btn">Vote</button>
 			</div>
 		</div>
