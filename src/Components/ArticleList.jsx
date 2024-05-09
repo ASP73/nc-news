@@ -1,4 +1,4 @@
-import Display from "./Display";
+import DisplayArticle from "./DisplayArticle";
 
 import { useSearchParams } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const ArticleList = () => {
 		<div className="body-container">
 			{/* <Filter searchParams={searchParams} setSearchParams={setSearchParams} /> */}
 
-			<Display searchParams={searchParams} />
+			<DisplayArticle searchParams={searchParams} />
 		</div>
 	);
 };

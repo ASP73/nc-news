@@ -17,4 +17,10 @@ export function getArticleById(article_id) {
   );
 }
 
+export function getCommentsByArticleId(article_id) {
+  return axios.get(
+    `https://be-project-news.onrender.com/api/articles/${article_id}/comments`
+  );
+}
+
 export default getArticles;

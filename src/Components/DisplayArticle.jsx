@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import getArticles from "./api";
 import ArticleCard from "./ArticleCard";
 
-const Display = ({ searchParams }) => {
+const DisplayArticle = ({ searchParams }) => {
 	const [allArticles, setAllArticles] = useState([]);
 	const [isError, setIsError] = useState(false);
 	useEffect(() => {
@@ -34,4 +34,4 @@ const Display = ({ searchParams }) => {
 	}
 };
 
-export default Display;
+export default DisplayArticle;

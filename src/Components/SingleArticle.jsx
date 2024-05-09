@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
-import { getArticleById } from "./api";
+import { getArticleById, getCommentsByArticleId } from "./api";
 import { useState, useEffect } from "react";
 export default function SingleArticle() {
 	const { article_id } = useParams();
 	const [singleArticle, setSingleArticle] = useState({});
 	useEffect(() => {
 		getArticleById(article_id).then(({ data }) => {
+            console.log(data);
 			setSingleArticle(() => {
 				return data.article[0];
 			});
@@ -28,7 +29,8 @@ export default function SingleArticle() {
                 <p>Date created: {formatDate(created_at)}</p>
                 <p>Votes: {votes}</p>
 
-				{/* <button className="vote-btn">Add vote</button> */}
+				<button className="comments-btn">Show Comments</button>
+                <button className="comments-btn">Vote</button>
 			</div>
 		</div>
 	);
