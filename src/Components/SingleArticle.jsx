@@ -9,7 +9,6 @@ export default function SingleArticle() {
     const [showComments, setShowComments] = useState(false);
 	useEffect(() => {
 		getArticleById(article_id).then(({ data }) => {
-            console.log(data);
 			setSingleArticle(() => {
 				return data.article[0];
 			});
@@ -37,8 +36,8 @@ export default function SingleArticle() {
                 <p>Votes: {votes}</p>
 
 				<button className="comments-btn" onClick={clickShowComments}>Show Comments</button>
-                {showComments && <CommentList article_id={article_id} />}
                 <button className="comments-btn">Vote</button>
+                {showComments && <CommentList article_id={article_id} />}
 			</div>
 		</div>
 	);

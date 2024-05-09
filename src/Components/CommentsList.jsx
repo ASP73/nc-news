@@ -1,13 +1,13 @@
 import DisplayComment from "./DisplayComment";
 
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 
-const CommentList = () => {
+const CommentList = ({article_id}) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	return (
 		<div className="body-container">
-			<DisplayComment searchParams={searchParams} />
+			<DisplayComment article_id={article_id} />
 		</div>
 	);
 };

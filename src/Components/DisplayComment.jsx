@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import getCommentsByArticleId from "./api";
+import { getCommentsByArticleId } from "./api";
 import CommentCard from "./CommentCard";
 
-const DisplayComment = ({ searchParams }) => {
+const DisplayComment = ({ article_id }) => {
 	const [allComments, setAllComments] = useState([]);
+
 	const [isError, setIsError] = useState(false);
 	useEffect(() => {
 		setIsError(false);
-		getCommentsByArticleId (searchParams)
+		getCommentsByArticleId (article_id)
 			.then(({ data }) => {
 				let CommentsDisplayed = data.comments;
 				setAllComments(CommentsDisplayed);
@@ -15,8 +16,8 @@ const DisplayComment = ({ searchParams }) => {
 			.catch(() => {
 				setIsError(true);
 			});
-	}, [searchParams]);
-	if (isError) {
+	}, [article_id]);
+	if (allComments.length < 1) {
 		return (
 			<>
 				<h2>There are no comments for this article</h2>
