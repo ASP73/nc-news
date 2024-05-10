@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getCommentsByArticleId } from "./api";
 import CommentCard from "./CommentCard";
 
-const DisplayComment = ({ article_id }) => {
+const DisplayComment = ({ article_id, isCommentPosted }) => {
 	const [allComments, setAllComments] = useState([]);
 
 	const [isError, setIsError] = useState(false);
@@ -16,7 +16,7 @@ const DisplayComment = ({ article_id }) => {
 			.catch(() => {
 				setIsError(true);
 			});
-	}, [article_id]);
+	}, [article_id, isCommentPosted]);
 	if (allComments.length < 1) {
 		return (
 			<>
