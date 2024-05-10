@@ -23,3 +23,13 @@ export function getCommentsByArticleId(article_id) {
     `https://be-project-news.onrender.com/api/articles/${article_id}/comments`
   );
 }
+
+export function patchVote(article_id, newVote) {
+  return axios
+    .patch(`https://be-project-news.onrender.com/api/articles/${article_id}`, {
+      inc_votes: newVote,
+    })
+    .then(({ data }) => {
+      return data;
+    });
+}
