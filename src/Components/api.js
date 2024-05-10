@@ -33,3 +33,18 @@ export function patchVote(article_id, newVote) {
       return data;
     });
 }
+
+export function postNewComment(article_id, username, newComment) {
+  return axios
+    .post(
+      `https://be-project-news.onrender.com/api/articles/${article_id}/comments`,
+      {
+        username,
+        body: newComment,
+      }
+    )
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+}
