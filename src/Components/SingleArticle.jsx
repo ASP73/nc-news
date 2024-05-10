@@ -34,9 +34,12 @@ export default function SingleArticle() {
               ...prevState,
               votes: prevState.votes + newVote,
             }));
+            setHasVoted(newVote);
           })
           .catch((error) => {
             console.error(error);
+            window.alert('Vote update failed. Please try again');
+            setHasVoted(false);
           });
       };
 
@@ -52,8 +55,8 @@ export default function SingleArticle() {
                 <p>Votes: {votes}</p>
 
 				<button className="comments-btn" onClick={clickShowComments}>Show Comments</button>
-                <button className="comments-btn" disabled={} onClick={() => handleVote(1)}>Vote up</button>
-                <button className="comments-btn" onClick={() => handleVote(-1)}>Vote down</button>
+                <button className="comments-btn" disabled={hasVoted === 1} onClick={() => handleVote(1)}>Vote up</button>
+                <button className="comments-btn" disabled={hasVoted === -1} onClick={() => handleVote(-1)}>Vote down</button>
                 {showComments && <CommentList article_id={article_id} />}
 			</div>
 		</div>
